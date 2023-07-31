@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Promise.race = function (args) {
+            return new Promise((resolve, rejected) => {
+                for (let i = 0, n = args.length; i < n; i++) {
+                    args[i].then(resolve, rejected)
+                }
+            })
+        }
+        let p1 = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                reject(1)
+            }, 1000)
+        })
+        let p2 = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve(2)
+            }, 2000)
+        })
+        let p3 = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve(3)
+            }, 3000)
+        })
+        Promise.race([p3, p1, p2]).then(res => {
+            console.log(res) // [3, 1, 2]
+        }).catch(error => {
+            console.log(error)
+        })
+        // p1.finally(console.log(1));
+    </script>
+</body>
+
+</html>

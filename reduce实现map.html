@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 使用reduce实现map
+        Array.prototype.myMap = function (fn, thisArg = []) {
+            return this.reduce((pre, cur) => {
+                return pre.concat(fn.call(thisArg, cur));
+            }, [])
+        }
+        const arr = [2, 3, 1, 5];
+        const temp = arr.myMap(item => item + 1)
+        console.log(temp);  // [4,6,2,10]
+
+    </script>
+</body>
+
+</html>

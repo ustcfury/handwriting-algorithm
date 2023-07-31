@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function ListNode(val) {
+            this.val = val
+            this.next = null
+        }
+        const p3 = new ListNode(3)
+        const p2 = new ListNode(2)
+        const p1 = new ListNode(1)
+        p1.next = p2
+        p2.next = p3
+        var reverseList = function (head) {
+            var pre = null;
+            var cur = head;
+            while (cur != null) {
+                var next = cur.next;
+                cur.next = pre;
+                pre = cur;
+                cur = next;
+            }
+            return pre;
+
+        };
+        var hasCycle = function (head) {
+            if (head == null || head.next == null) {
+                return false;
+            }
+            var slow = head;
+            var fast = head.next;
+            while (slow != fast) {
+                if (fast == null || fast.next == null) {
+                    return false;
+                }
+                slow = slow.next;
+                fast = fast.next.next;
+            }
+            return true;
+        };
+        // console.log(reverseList(p1));
+        console.log(hasCycle(p1));
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        Promise.myallSettled = function (promises) {
+            const length = promises.length
+            return new Promise((resolve, reject) => {
+                let count = 0,
+                    data = []
+                for (let i = 0; i < length; i++) {
+                    promises[i].then(value => {
+                        data[i] = { status: 'fulfilled', value }
+                    }).catch().finally(() => {
+                        if (++count == length) {
+                            resolve(data)
+                        }
+                    })
+                }
+            })
+        }
+        let p1 = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve(1)
+            }, 1000)
+        })
+        let p2 = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                reject(2)
+            }, 2000)
+        })
+        let p3 = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve(3)
+            }, 3000)
+        })
+        Promise.allSettled([p3, p1, p2]).then(res => {
+            console.log(res) // [3, 1, 2]
+        })
+    </script>
+</body>
+
+</html>

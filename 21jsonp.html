@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 动态的加载js文件
+        function jsonP(src) {
+            const script = document.createElement('script')
+            script.src = src
+            script.type = 'javascript/text'
+            document.appendChild(script)
+        }
+        addScript("http://xxx.xxx.com/xxx.js?callback=handleRes");
+        // 设置一个全局的callback函数来接收回调结果
+        function handleRes(res) {
+            console.log(res);
+        }
+        // 接口返回的数据格式
+        handleRes({ a: 1, b: 2 });
+    </script>
+</body>
+
+</html>

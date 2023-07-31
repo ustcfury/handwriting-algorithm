@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+      const SERVER_URL='/server';
+      const xhr=new XMLHttpRequest();
+      xhr.open('GET',SERVER_URL,true);
+      xhr.onreadystatechange=function(){
+        if(this.readyState!==4)return;
+        if(this.status===200){
+            handle(this.response);
+        }else{
+            console.error(this.responseText);
+        }
+      }
+      xhr.onerror=function(){
+        console.error(this.responseText);
+      }
+      xhr.responseType='json';
+      xhr.setRequestHeader('Accept','application/json');
+      xhr.send()
+    </script>
+</body>
+</html>

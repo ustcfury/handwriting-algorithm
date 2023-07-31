@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function flatten(obj) {
+            const ans = {}
+            inner(obj, null)
+            function inner(obj, prev) {
+                for (let key in obj) {
+                    if (obj[key] instanceof Object) {
+                        if (prev === null) {
+                            inner(obj[key], key)
+                        } else {
+                            inner(obj[key], prev + '.' + key)
+                        }
+                    } else {
+                        if (prev === null) {
+                            ans[key] = obj[key]
+                        } else {
+                            ans[prev + '.' + key] = obj[key]
+                        }
+                    }
+                }
+            }
+            return ans
+        }
+        const obj = {
+            a: 1,
+            b: { c: 2, d: 3 },
+            e: { f: { g: 4 } },
+            h: { i: { j: 5, k: 6 } }
+        }
+        console.log(flatten(obj));
+    </script>
+</body>
+
+</html>
