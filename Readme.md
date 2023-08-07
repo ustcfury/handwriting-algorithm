@@ -18,7 +18,7 @@ https://blog.csdn.net/sinat_17775997/article/details/89414014?spm=1001.2101.3001
 Object.prototype.toString.call的原理:获取this对象的[[Class]]属性的值.
 
 react中key：简单的来说就是为了提高diff的同级比较的效率,避免原地复用带来的副作用
-![https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%871.png]
+![Image text](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%871.png)
 
 
 单网页应用：页面切换快，不利于seo，首屏渲染慢
