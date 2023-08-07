@@ -1,6 +1,9 @@
 扫码登录:
 https://blog.csdn.net/qingfengxd1/article/details/118880261
 
+jwt登录原理：
+https://blog.csdn.net/weixin_45070175/article/details/118559272
+
 cors跨域原理：它会在请求的头信息中增加一个Orign字段,浏览器根据这个值判断是否同意请求。请求方法为DELETE或者PUT等。非简单请求的CORS请求会在正式通信之前进行一次HTTP查询请求，称为预检请求。
 
 Symbol主要用于什么场景下:定义一些不可重名的方法防止覆盖，为对象定义一些非私有的、但又希望只用于内部的方法（Symbol作为键名，不会被常规方法遍历到，除非Object.getOwnPropertySymbols()）
