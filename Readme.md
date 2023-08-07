@@ -18,10 +18,39 @@ https://blog.csdn.net/sinat_17775997/article/details/89414014?spm=1001.2101.3001
 Object.prototype.toString.call的原理:获取this对象的[[Class]]属性的值.
 
 react中key：简单的来说就是为了提高diff的同级比较的效率,避免原地复用带来的副作用
-![Image text](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%871.png)
-
 
 单网页应用：页面切换快，不利于seo，首屏渲染慢
 
+es6新增：Let,const，解构赋值，模板字符串，箭头函数，rest参数，展开运算符，generator，promise，Set，Map，symbol，bigInt，include，async，正则表达式，import动态导入。
 
+node事件循环
+timer:setTimeout,setInterval,
+I/O:close事件，定时器，setImmediate事件回调，
+idle,prepare:内部实现，
+poll:执行poll队列里的事件
+check:setImmediate
+closebacks:close事件
 
+http1.1:
+持久链接：复用TCP；
+请求方法新增：put,head,option；
+缓存：etag,
+资源请求：范围请求206
+
+http2.0:
+二进制传输：数据采用二进制编码；
+多路复用：解决队头堵塞；
+header压缩：减少header大小；
+服务端push：请求后主动发送其他资源；
+
+![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%871.png)
+
+![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%872.png)
+
+![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%873.png)
+
+![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%874.png)
+
+![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%875.png)
+
+![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%876.png)
