@@ -4,7 +4,7 @@ https://blog.csdn.net/qingfengxd1/article/details/118880261
 jwt登录原理：
 https://blog.csdn.net/weixin_45070175/article/details/118559272
 
-cors跨域原理：它会在请求的头信息中增加一个Orign字段,浏览器根据这个值判断是否同意请求。请求方法为DELETE或者PUT等。非简单请求的CORS请求会在正式通信之前进行一次HTTP查询请求，称为预检请求。
+cors跨域原理：它会在请求的头信息中增加一个 Orign 字段,浏览器根据这个值判断是否同意请求。请求方法为DELETE或者PUT等。非简单请求的CORS请求会在正式通信之前进行一次HTTP查询请求，称为预检请求。
 
 Symbol主要用于什么场景下:定义一些不可重名的方法防止覆盖，为对象定义一些非私有的、但又希望只用于内部的方法（Symbol作为键名，不会被常规方法遍历到，除非Object.getOwnPropertySymbols()）
 
@@ -68,9 +68,51 @@ webpack 懒加载？
 206 状态码？
 HTTP 状态码 206 表示客户端发送了一个带有 Range 头部的 GET 请求，服务器成功地响应了这个请求，并返回了请求范围内的部分数据。206 状态码通常用于实现断点续传或分段下载等功能，可以在网络不稳定或带宽较低的情况下提高下载效率和用户体验。
 
-Service Worker有哪些作用？
+Service Worker 有哪些作用？
 缓存资源：Service Worker 可以将网页所需的资源缓存到本地，从而提高网页的访问速度和用户体验。当用户再次访问网页时，Service Worker 可以从本地缓存中加载资源，而不需要重新从网络上下载，从而减少网络流量和服务器负载。
 拦截请求：Service Worker 可以拦截浏览器发出的请求，并根据需要进行处理，例如修改请求参数、替换资源、重定向请求等。这种功能可以用于实现网络优化、广告拦截、安全防护等场景。
+
+JS 模块化？
+前端模块化是指将一个大的 JavaScript 应用程序拆分成多个小模块，每个模块负责完成一个特定的功能。通过模块化的方式，可以提高代码的可维护性、可读性和可复用性，降低代码的耦合度，从而提高开发效率和代码质量。
+在前端开发中，常见的模块化方案有 CommonJS、AMD、ES6 Module 等。其中，ES6 Module 是官方标准的模块化方案，已经被现代浏览器广泛支持，并且也可以通过 Babel 等工具转换成其他模块化方案的代码。
+ES6 Module 使用 import 和 export 关键字来导入和导出模块。
+
+webpack 中如何处理图片的？
+file-loader：解决CSS等中引入图片的路径问题；(解决通过url,import/require()等引入图片的问题)
+url-loader：当图片小于设置的limit参数值时，url-loader将图片进行base64编码(当项目中有很多图片，通过url-loader进行base64编码后会减少http请求数量，提高性能)，大于limit参数值，则使用file-loader拷贝图片并输出到编译目录中；
+
+前后端如何验证一个用户是否下线了？
+心跳检测：前端定时向后端发送请求，后端返回响应后，前端根据响应的时间戳判断用户是否在线。如果一段时间内没有收到响应，就认为用户已经下线。
+WebSocket：使用 WebSocket 技术建立长连接，前后端可以实时通信，从而判断用户是否在线。如果一段时间内没有收到用户的消息，就认为用户已经下线。
+Token 验证：前端在登录后获取到一个 Token，后端在验证请求时可以检查 Token 是否过期，从而判断用户是否在线。如果 Token 过期，就认为用户已经下线。
+
+requestAnimationFrame 和 setTimeout 的区别？
+requestAnimationFrame 是浏览器用于定时循环操作的一个接口，类似于 setTimeout，主要用途是按帧对网页进行重绘。对于 JS 动画，用 requestAnimationFrame 会比 setInterval 效果更好。
+
+React Fiber 的 Virtual DOM Diff 算法相比旧版的算法，具有以下优点：
+更加灵活：React Fiber 可以根据不同的场景选择不同的遍历策略，从而更好地支持异步渲染和优化性能。
+更加高效：React Fiber 可以将渲染和更新过程分解成多个小任务，从而提高性能和用户体验。
+更加可靠：React Fiber 可以在中断和恢复渲染过程中保存现场和恢复现场，从而提高可靠性和稳定性。
+
+HTTP/2 是如何压缩头部的？
+首先是在服务器和客户端之间建立哈希表，将用到的字段存放在这张表中，那么在传输的时候对于之前出现过的值，只需要把索引(比如0，1，2，...)传给对方即可，对方拿到索引查表就行了。这种传索引的方式，可以说让请求头字段得到极大程度的精简和复用。
+其次是对于整数和字符串进行哈夫曼编码，哈夫曼编码的原理就是先将所有出现的字符建立一张索引表，然后让出现次数多的字符对应的索引尽可能短，传输的时候也是传输这样的索引序列，可以达到非常高的压缩率。
+
+下面是一个简单的 Webpack 插件示例，它会在编译完成后输出一个文件：
+const fs = require('fs');
+class MyPlugin {
+  apply(compiler) {
+    compiler.hooks.done.tap('MyPlugin', (stats) => {
+      const outputPath = stats.compilation.outputOptions.path;
+      const outputFilename = 'my-plugin-output.txt';
+      const outputContent = 'Hello, MyPlugin!';
+
+      fs.writeFileSync(`${outputPath}/${outputFilename}`, outputContent);
+    });
+  }
+}
+module.exports = MyPlugin;
+
 ![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%871.png)
 
 ![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%872.png)
