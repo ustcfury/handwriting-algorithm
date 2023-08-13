@@ -51,11 +51,11 @@ Nginx 反向代理是一种常见的服务器架构设计模式，它可以将�
 
 首页加载优化？
 React路由懒加载 lazyLoad
-使用CDN加速，将通用的库从 vendor 进行抽离
-Nginx 的 gzip 压缩
 React 异步组件
 服务端渲染 SSR
 如果使用了一些 UI 库，采用按需加载
+使用CDN加速，将通用的库从 vendor 进行抽离
+Nginx 的 gzip 压缩
 Webpack 开启 gzip 压缩
 如果首屏为登录页，可以做成多入口
 Service Worker 缓存文件处理
