@@ -118,6 +118,12 @@ module.exports = MyPlugin;
 时，会保留当前的执行上下文，然后再新建另外一个执行上下文加入栈中。使用尾调用的话，因为已经是函数的
 最后一步，所以这时可以不必再保留当前的执行上下文，从而节省了内存，这就是尾调用优化。但是 ES6 的尾调用优化只在严格模式下开启，正常模式是无效的。
 
+use strict:
+变量必须先声明再使用：在严格模式下，变量必须先声明再使用，否则会抛出 ReferenceError 错误。
+函数必须声明在顶层：在严格模式下，函数必须声明在顶层，不能在非函数代码块中声明函数，否则会抛出 SyntaxError 错误。
+禁止使用 eval 和 arguments：在严格模式下，禁止使用 eval 和 arguments，否则会抛出 SyntaxError 错误。
+严格模式下的 this：在严格模式下，函数内部的 this 指向 undefined，而不是全局对象。
+
 ![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%871.png)
 
 ![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%872.png)
