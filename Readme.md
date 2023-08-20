@@ -124,6 +124,12 @@ use strict:
 禁止使用 eval 和 arguments：在严格模式下，禁止使用 eval 和 arguments，否则会抛出 SyntaxError 错误。
 严格模式下的 this：在严格模式下，函数内部的 this 指向 undefined，而不是全局对象。
 
+axios 的请求拦截器和相应拦截器
+添加请求头：可以在请求拦截器中添加一些请求头，例如 token 等信息。
+参数序列化：可以在请求拦截器中对请求参数进行序列化，例如将对象转换为 URL 查询字符串等。
+统一处理错误：可以在响应拦截器中统一处理错误，例如处理 401、403 等未授权的错误。
+
+
 ![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%871.png)
 
 ![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%872.png)
