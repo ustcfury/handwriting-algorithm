@@ -129,6 +129,9 @@ axios 的请求拦截器和相应拦截器
 参数序列化：可以在请求拦截器中对请求参数进行序列化，例如将对象转换为 URL 查询字符串等。
 统一处理错误：可以在响应拦截器中统一处理错误，例如处理 401、403 等未授权的错误。
 
+setTimeout函数的执行时间间隔是不固定的，它会在指定的时间间隔后将回调函数添加到事件队列中，等待JavaScript引擎的空闲时间执行。而setInterval函数的执行时间间隔是固定的，它会每隔指定的时间间隔将回调函数添加到事件队列中，不受JavaScript引擎的空闲时间影响。
+解决方案：
+while 循环记录时间戳，webworker，requestAnimationFrame，
 
 ![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%871.png)
 
