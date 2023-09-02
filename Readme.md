@@ -133,6 +133,16 @@ setTimeout函数的执行时间间隔是不固定的，它会在指定的时间�
 解决方案：
 while 循环记录时间戳，webworker，requestAnimationFrame，
 
+ajax:
+基于原生 XHR 开发，架构不清晰；
+针对 MVC 编程，不符合 MVVM；
+fetch：
+语法简洁；
+基于 promise，api 丰富；
+只会对网络请求报错，400，500不报错；默认不带 cookie
+axios:
+支持 promise api；可以取消请求，自动转换 json 数据，支持低于 CSRF 攻击
+
 ![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%871.png)
 
 ![](https://github.com/ustcfury/handwriting-algorithm/blob/master/img-storage/%E5%9B%BE%E7%89%872.png)
